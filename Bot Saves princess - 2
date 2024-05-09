@@ -50,30 +50,31 @@ Your score for every testcase would be (NxN minus number of moves made to rescue
 #1-Find where the princess starts in the grid
 #2-print the first move that brings Mario closer to the princess
 
+# Enter your code here. Read input from STDIN. Print output to STDOUT# Enter your code here. Read input from STDIN. Print output to STDOUT
+
 def nextMove(n, m_row, m_col, grid):
     
         
     #Move mario towards princess
-    #This is similar to the previous problem but instead of moving until completion, we only need to return the first step
-    #If mario is below princess print up 
+    #If mario is below princess print up and move up one on the grid
     if m_row<p_start[0]:
         return 'DOWN'
-
+        m_row+=1
     
-    #If mario is above princess print down 
+    #If mario is above princess print down and move down one on the grid
     if m_row>p_start[0]:
         return 'UP'
-
+        m_row-=1
     
-    #If mario is left of princess print Right 
+    #If mario is left of princess print Right and move right one on the grid
     if m_col<p_start[1]:
         return 'RIGHT'
-
+        m_col+=1
     
-    #If mario is right of princess print left 
+    #If mario is right of princess print left and move left one on the grid
     if m_col>p_start[1]:
         return 'LEFT'
-
+        m_col-=1
         
 n = int(input())
 m_row,m_col= [int(i) for i in input().strip().split()]
@@ -83,12 +84,10 @@ for i in range(0, n):
     
 #we must subtract 1 for grid notation because it starts at zero
 n=n-1
-#This gives us a list of each row and column number.
-num_row=range(0,n)
-num_col=range(0,n)
-    
+num_row=[*range(0,n)]
+num_col=[*range(0,n)]
+
 #find princess
-#With this nested for loop, we can test each grid coordinate to determine if the princess is located there
 for x in num_row:
     for y in num_col:
         if grid[x][y]=='p':
