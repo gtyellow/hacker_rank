@@ -82,12 +82,11 @@ grid = []
 for i in range(0, n): 
     grid.append(input().strip())
     
-#we must subtract 1 for grid notation because it starts at zero
-n=n-1
+#find princess
+#Create a list of each possible row and column position
 num_row=[*range(0,n)]
 num_col=[*range(0,n)]
-
-#find princess
+#Check each grid postion to find princess's coordinates
 for x in num_row:
     for y in num_col:
         if grid[x][y]=='p':
